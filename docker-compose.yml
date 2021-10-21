@@ -1,20 +1,14 @@
 version: "3"
 
 services:
-  postgres:
-    image: postgres:13-alpine
-    environment:
-      POSTGRES_PASSWORD: postgres
-    ports: [5432:5432]
-
   php:
     image: webdevops/php-nginx:8.0-alpine
     working_dir: /app
     environment:
       - WEB_DOCUMENT_ROOT=/app/public/
-    depends_on: [postgres]
     volumes:
       - .:/app
+      - ./install.sh:/opt/docker/provision/entrypoint.d/30-install.sh
     ports:
       - 8000:80
   node:
@@ -23,3 +17,4 @@ services:
     user: node
     volumes:
       - .:/app
+    command: sh -c 'npm install && npm run dev'
