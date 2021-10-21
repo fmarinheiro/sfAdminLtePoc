@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  postgres:
+    image: postgres:13-alpine
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports: [5432:5432]
+
+  php:
+    image: webdevops/php-nginx:8.0-alpine
+    working_dir: /app
+    environment:
+      - WEB_DOCUMENT_ROOT=/app/public/
+    depends_on: [postgres]
+    volumes:
+      - .:/app
+    ports:
+      - 8000:80
+  node:
+    image: node:16-alpine
+    working_dir: /app
+    user: node
+    volumes:
+      - .:/app
