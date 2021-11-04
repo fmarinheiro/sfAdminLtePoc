@@ -1,4 +1,7 @@
 const Encore = require('@symfony/webpack-encore');
+const webpack = require('webpack');
+const ESLintPlugin = require('eslint-webpack-plugin');
+const path = require('path');
 
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
 // It's useful when you use tools that rely on webpack.config.js file.
@@ -21,6 +24,7 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/app.js')
+    .addEntry('orders', './assets/vue/src/orders.ts')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     //.enableStimulusBridge('./assets/controllers.json')
@@ -70,6 +74,25 @@ Encore
 
     // uncomment if you're having problems with a jQuery plugin
     //.autoProvidejQuery()
+
+    .addPlugin(
+        new webpack.DefinePlugin({
+          // Drop Options API from bundle
+          __VUE_OPTIONS_API__: false,
+          __VUE_PROD_DEVTOOLS__: false
+        })
+      )
+    .enableVueLoader(() => {}, { runtimeCompilerBuild: false })
+    .addPlugin(new ESLintPlugin({
+        files: 'assets/vue/**/*',
+    }))
+    .enableTypeScriptLoader()
 ;
 
-module.exports = Encore.getWebpackConfig();
+config = Encore.getWebpackConfig()
+config.resolve.alias = {
+    ...config.resolve.alias,
+    '@': path.resolve(__dirname, './assets/vue/src/')
+  };
+
+module.exports = config

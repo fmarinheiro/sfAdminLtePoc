@@ -1,0 +1,35 @@
+{
+    "compilerOptions": {
+      "target": "esnext",
+      "module": "esnext",
+      // this enables stricter inference for data properties on `this`
+      "strict": true,
+      "jsx": "preserve",
+      "moduleResolution": "node",
+      "baseUrl": "./assets/vue",
+      "importHelpers": true,
+      "experimentalDecorators": true,
+      "skipLibCheck": true,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "sourceMap": true,
+      "lib": [
+        "esnext",
+        "dom",
+        "dom.iterable",
+        "scripthost"
+      ],
+      "paths": {
+        "@/*": [
+          "src/*"
+        ]
+      }
+    },
+    "exclude": [
+        "./node_modules"
+    ],
+    "include": [
+        "./assets/vue/**/*.ts",
+        "./assets/vue/**/*.vue",
+    ]
+}

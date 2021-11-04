@@ -1,5 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block content %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('vueApp') }}
+{% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('vueApp') }}
+{% endblock %}
+
+{% block content %}
+safdsadsafdaaf
+<div id="orders"></div>
 {% endblock %}

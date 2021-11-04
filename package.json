@@ -2,11 +2,21 @@
     "devDependencies": {
         "@symfony/stimulus-bridge": "^2.0.0",
         "@symfony/webpack-encore": "^1.0.0",
+        "@typescript-eslint/eslint-plugin": "^5.3.0",
+        "@typescript-eslint/parser": "^5.3.0",
+        "@vue/compiler-sfc": "^3.2.21",
+        "@vue/eslint-config-typescript": "^9.0.1",
         "core-js": "^3.0.0",
+        "eslint": "^8.1.0",
+        "eslint-plugin-vue": "^8.0.3",
+        "eslint-webpack-plugin": "^3.1.0",
         "regenerator-runtime": "^0.13.2",
         "sass": "^1.43.2",
         "sass-loader": "^12.2.0",
         "stimulus": "^2.0.0",
+        "ts-loader": "^9.2.6",
+        "typescript": "^4.4.4",
+        "vue-loader": "^16.8.2",
         "webpack-notifier": "^1.6.0"
     },
     "license": "UNLICENSED",
@@ -19,6 +29,7 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.4",
-        "admin-lte": "^3.1.0"
+        "admin-lte": "^3.1.0",
+        "vue": "^3.2.21"
     }
 }
